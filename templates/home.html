@@ -1,6 +1,69 @@
 {% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
 {% block content %}
-<section class="container">
-    <h2>hello</h2>
+<head>
+    <link href="{% static 'css/contact-us.css' %}" rel="stylesheet">
+</head>
+<!-- =================> start contact <================= -->
+<section class="contact-us">
+    <div class="container">
+        <br>
+        <h3 class="text-center">Connect with us</h3>
+        <br><br>
+        <form action="" method="post" class="form">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="me-2">
+                        <div>
+                            <label for="fname">First name <span class="asteriskField"> * </span></label>
+                            {% render_field contact_form.first_name|attr:'required:true' class="form-control" name="fname" id="fname" %}
+                        </div>
+                        <div>
+                            <label for="lname">Last name <span class="asteriskField"> * </span></label>
+                            {% render_field contact_form.last_name|attr:'required:true' class="form-control" name="lname" id="lname" %}
+                        </div>
+                        <div>
+                            <label for="org">Organisation</label>
+                            {% render_field contact_form.org|attr:'' class="form-control" name="org" id="org" %}
+                        </div>
+                        <div>
+                            <label for="email">Email <span class="asteriskField"> * </span> </label> 
+                            {% render_field contact_form.email|attr:'required:true' class="form-control" name="email" id="email" %}
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="comment" class="ms-2">Comment <span class="asteriskField"> * </span> </label>
+                    {% render_field contact_form.comment|attr:'required:true' class="form-control ms-2" name="comment" id="comment" %}
+                </div>
+                <!-- captcha -->
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <br>
+                        <div>
+                            <label for="comment">Please enter the code:</label> <br>
+                            {% render_field contact_form.captcha|attr:'required:true' class="form-control" %}
+                        </div>
+                        <!-- Error message -->
+                        {% for error in contact_form.captcha.errors %}
+                        <ul class="text-danger">
+                            <li>
+                                <p>{{ error }}</p>
+                            </li>
+                        </ul>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="text-center my-4">
+                    <button type="submit" class="btn btn-common" style="padding: 10px 80px;"><b>Submit</b></button>
+                </div>
+            </div>
+        </form>
+    </div>
 </section>
+
 {% endblock %}
