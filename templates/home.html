@@ -9,7 +9,9 @@
 <section class="contact-us">
     <div class="container">
         <br>
-        <h3 class="text-center">Connect with us</h3>
+        <div>
+            <h3 class="text-center">Connect with us</h3>
+        </div>
         <br><br>
         <form action="" method="post" class="form">
             {% csrf_token %}
@@ -18,11 +20,11 @@
                     <div class="me-2">
                         <div>
                             <label for="fname">First name <span class="asteriskField"> * </span></label>
-                            {% render_field contact_form.first_name|attr:'required:true' class="form-control" name="fname" id="fname" %}
+                            {% render_field contact_form.first_name|attr:'required:true' class="form-control inpt" name="fname" id="fname" %}
                         </div>
                         <div>
                             <label for="lname">Last name <span class="asteriskField"> * </span></label>
-                            {% render_field contact_form.last_name|attr:'required:true' class="form-control" name="lname" id="lname" %}
+                            {% render_field contact_form.last_name|attr:'required:true' class="form-control inpt" name="lname" id="lname" %}
                         </div>
                         <div>
                             <label for="org">Organisation</label>
@@ -59,7 +61,7 @@
                     </div>
                 </div>
                 <div class="text-center my-4">
-                    <button type="submit" class="btn btn-common" style="padding: 10px 80px;"><b>Submit</b></button>
+                    <button type="submit" class="btn btn-primary" style="padding: 10px 80px;"><b>Submit</b></button>
                 </div>
             </div>
         </form>

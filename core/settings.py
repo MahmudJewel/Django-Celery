@@ -126,7 +126,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIR = [STATIC_DIR] # Search during collectstatic
+STATICFILES_DIR = [STATIC_DIR,] # Search during collectstatic
 STATIC_ROOT = STATIC_ROOT_DIR # collectstatic==> automatically created 'autoStatic' folder.
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'

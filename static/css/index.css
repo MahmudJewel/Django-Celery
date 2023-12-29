@@ -1,0 +1,9 @@
+/* ================> asteric field <============== */
+.asteriskField {   /* for custom css */
+    color: red;
+}
+
+label.required::after {  /* for buld-in form  */
+    content: ' *';
+    color: red;
+}

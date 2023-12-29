@@ -24,9 +24,9 @@ def sending_mail(contact_form):
     message = "\n".join(body.values())
     try:
         print('ok mail ======')
-        # send_mail(subject, message, from_mail, [from_mail]) 
+        send_mail(subject, message, from_mail, [from_mail]) 
         # contact_form = ContactForm() # clear the form after sending mail
-        send_mail(subject, message, from_mail, [from_mail, 'bob@writing.fund'])
+        # send_mail(subject, message, from_mail, [from_mail, 'bob@writing.fund'])
         return True 
     except BadHeaderError:
         # print('Mail error ========>', BadHeaderError)
