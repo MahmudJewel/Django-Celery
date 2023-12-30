@@ -3,9 +3,13 @@ from django.shortcuts import render, redirect
 
 from .forms import ContactForm
 from .functions import *
+from .tasks import test_func
 
 def home(request):
     template_name = 'home.html'
+    
+    test_func.delay()  # Celery
+
     contact_form = ContactForm()
     if request.method == 'POST':
         contact_form = ContactForm(request.POST)
