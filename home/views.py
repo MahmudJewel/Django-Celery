@@ -8,13 +8,26 @@ from .tasks import test_func
 def home(request):
     template_name = 'home.html'
     
-    test_func.delay()  # Celery
+    # test_func.delay()  # Celery
 
     contact_form = ContactForm()
     if request.method == 'POST':
         contact_form = ContactForm(request.POST)
         if contact_form.is_valid():
-            result = sending_mail(contact_form)
+            first_name = contact_form.cleaned_data['first_name']
+            last_name = contact_form.cleaned_data['last_name']
+            org = contact_form.cleaned_data['org']
+            email = contact_form.cleaned_data['email']
+            comments = contact_form.cleaned_data['comment']
+            subject = org
+            body = {
+		        'name': first_name+' '+last_name,
+                'org': org,
+		        'user_mail': email, 
+		        'message': comments, 
+		        }
+
+            result = send_mail_task.delay(subject, body)
             if result:
                 # contact_form = ContactForm() # clear the form after sending mail
                 return redirect('success_mail')
