@@ -1,9 +1,10 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from django.conf import settings
 
 from .forms import ContactForm
 from .functions import *
-from .tasks import test_func
+from .tasks import *
 
 def home(request):
     template_name = 'home.html'

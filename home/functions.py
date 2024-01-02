@@ -1,5 +1,4 @@
 from django.core.mail import send_mail,BadHeaderError
-from django.conf import settings
 from django.http import HttpResponse
 from celery import shared_task
 
@@ -7,7 +6,13 @@ from celery import shared_task
 def send_mail_task(self,subject, message, from_mail, to_mail):
     try:
         print('ok mail ======')
-        send_mail(subject, message, from_mail, to_mail) 
+        send_mail(
+            subject, 
+            message, 
+            from_mail, 
+            to_mail, 
+            fail_silently=True 
+            ) 
         print('Mail send successfully =======>')
         return True 
     except BadHeaderError:
