@@ -38,3 +38,4 @@ def home(request):
         'contact_form':contact_form
     }
     return render(request, template_name, context)
+
