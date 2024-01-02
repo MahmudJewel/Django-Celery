@@ -1,7 +1,9 @@
 from django.core.mail import send_mail,BadHeaderError
 from django.http import HttpResponse
 from celery import shared_task
+
 from django.conf import settings
+
 
 @shared_task(bind=True)
 def send_mail_task(self,subject, message, from_mail, to_mail):

@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'captcha',
     'widget_tweaks',
     'django_celery_results',
+    'django_celery_beat',
 ]
 
 MIDDLEWARE = [
